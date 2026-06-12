@@ -2,7 +2,7 @@ LogIQ: Intelligent Log Analysis Platform
 
 Group 1 (LogIQ) | CS 6030-120: Natural Language Processing | Western Michigan University | Spring 2026
 
-Students: Poornarakesh Anagani, Charani Kavali, Pujitha Maddireddy
+Students: Poornarakesh Anagani,Athara Mahamuni
 Instructor: Prof. Alvis Fong
 Date of Submission: April 23, 2026
 
