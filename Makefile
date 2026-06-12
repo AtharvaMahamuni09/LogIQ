@@ -1,0 +1,39 @@
+.PHONY: help setup up down test clean status
+
+help:
+	@echo "Available commands:"
+	@echo "  make setup     - Setup Python virtual environment"
+	@echo "  make up        - Start all Docker services"
+	@echo "  make down      - Stop all Docker services"
+	@echo "  make test      - Run connection tests"
+	@echo "  make clean     - Clean up containers and volumes"
+	@echo "  make status    - Show Docker container status"
+	@echo "  make logs      - View service logs"
+
+setup:
+	python3 -m venv venv
+	. venv/bin/activate && pip install -r requirements.txt
+	. venv/bin/activate && pip install -r requirements-dev.txt
+
+up:
+	docker compose up -d
+	sleep 10
+	make test
+
+down:
+	docker compose down
+
+status:
+	docker compose ps
+
+logs:
+	docker compose logs -f
+
+test:
+	python3 scripts/test_connections.py
+
+clean:
+	docker compose down -v
+	rm -rf venv/
+	find . -type d -name "__pycache__" -exec rm -rf {} +
+	rm -rf .pytest_cache/
